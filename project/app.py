@@ -9,8 +9,8 @@ app.config.from_pyfile('_config.py')
 bcrypt = Bcrypt(app)
 db = SQLAlchemy(app)
 
-from project.users.views import users_blueprint
-from project.tweets.views import tweets_blueprint
+from views import users_blueprint
+from views_2 import tweets_blueprint
 
 # registering blueprints
 app.register_blueprint(users_blueprint)

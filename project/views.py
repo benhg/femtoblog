@@ -5,9 +5,9 @@ from flask import (flash, redirect, render_template,
     request, session, url_for, Blueprint)
 from sqlalchemy.exc import IntegrityError
 
-from .forms import PostTweetForm
-from project import db
-from project.models import User, Tweet, Follower
+from forms import PostTweetForm
+from app import db
+from models import User, Tweet, Follower
 
 # config
 tweets_blueprint = Blueprint('tweets', __name__)

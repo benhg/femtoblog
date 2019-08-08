@@ -1,6 +1,6 @@
 import datetime
 
-from project import db
+from app import db
 
 
 class Tweet(db.Model):
