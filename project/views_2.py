@@ -4,9 +4,9 @@ from flask import (flash, redirect, render_template,
     request, session, url_for, Blueprint)
 from sqlalchemy.exc import IntegrityError
 
-from forms import RegisterForm, LoginForm
+from forms_2 import RegisterForm, LoginForm
 from app import db, bcrypt
-from models2 import User, Follower
+from models import User, Follower
 
 # config
 users_blueprint = Blueprint('users', __name__)
