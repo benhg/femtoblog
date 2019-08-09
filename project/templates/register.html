@@ -4,7 +4,7 @@
 <form action="/register/" method="post">
     {{ form.csrf_token }}
     <p>
-        {{ form.name(placeholder="name") }}
+        {{ form.name(placeholder="username") }}
         {% if form.name.errors %}
         <span class="error">
         {% for error in form.name.errors %}
