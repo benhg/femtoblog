@@ -36,7 +36,7 @@
           <ul class="nav nav-pills pull-right">
           {% if session.logged_in %}
           <li><a href="/">Home</a></li>
-          <li><a href="/tweets/">Tweets</a></li>
+          <li><a href="/1grams/">1Grams</a></li>
           <li><a href="{{ url_for('users.all_users') }}"">{{ session.name }}</a></li>
           {% endif %}
           {% if not session.logged_in %}

@@ -38,7 +38,7 @@ def filtered_tweets(user_id):
 
 # routes
 
-@tweets_blueprint.route('/tweets/')
+@tweets_blueprint.route('/1grams/')
 @login_required
 def tweet():
     return render_template(
@@ -47,7 +47,7 @@ def tweet():
         all_tweets=filtered_tweets(session['user_id']),
     )
 
-@tweets_blueprint.route('/tweets/post/', methods=['GET', 'POST'])
+@tweets_blueprint.route('/1grams/post/', methods=['GET', 'POST'])
 @login_required
 def post_tweet():
     error = None
@@ -61,7 +61,7 @@ def post_tweet():
             )
             db.session.add(new_tweet)
             db.session.commit()
-            flash('New tweet has been posted.')
+            flash('New 1gram has been posted.')
             return redirect(url_for('tweets.tweet'))
     return render_template(
         'tweets.html',
@@ -70,7 +70,7 @@ def post_tweet():
         all_tweets=filtered_tweets(session['user_id']),
     )
 
-@tweets_blueprint.route('/tweets/delete/<int:tweet_id>/')
+@tweets_blueprint.route('/1grams/delete/<int:tweet_id>/')
 @login_required
 def delete_tweet(tweet_id):
     our_tweet_id = tweet_id
@@ -88,7 +88,7 @@ def delete_tweet(tweet_id):
         flash('That tweet does not exists. Saw what you did there, Hacker!')
         return redirect(url_for('tweets.tweet'))
 
-@tweets_blueprint.route('/tweets/follow/<int:user_id>/')
+@tweets_blueprint.route('/1grams/follow/<int:user_id>/')
 @login_required
 def follow_user(user_id):
     whom_id = user_id
@@ -108,13 +108,13 @@ def follow_user(user_id):
                 flash('You are already following {}'.format(whom))
                 return redirect(url_for('tweets.tweet'))
         else:
-            flash('No use following yourself. You will still see your tweets anyway. :)')
+            flash('No use following yourself. You will still see your 1grams anyway. :)')
             return redirect(url_for('tweets.tweet'))
     except AttributeError:
         flash('That user does not exist.')
         return redirect(url_for('tweets.tweet'))
 
-@tweets_blueprint.route('/tweets/unfollow/<int:user_id>/')
+@tweets_blueprint.route('/1grams/unfollow/<int:user_id>/')
 @login_required
 def unfollow_user(user_id):
     whom_id = user_id

@@ -5,6 +5,6 @@ from wtforms.validators import DataRequired, Length
 
 class PostTweetForm(Form):
     tweet = StringField(
-        'Tweet',
+        '1Gram',
         validators=[DataRequired(), Length(min=1, max=1)]
     )
