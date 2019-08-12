@@ -7,5 +7,5 @@ if [ $# != 1 ]; then
             	sudo docker rm -f $1
             	sudo docker cp rm $1
 				sudo docker build -t femtoblog project/
-				sudo docker run -d -p 80:8080 femtoblog
+				sudo docker run -d -p 8080:8080 femtoblog
         fi
