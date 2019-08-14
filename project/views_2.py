@@ -6,7 +6,7 @@ from sqlalchemy.exc import IntegrityError
 
 from forms_2 import RegisterForm, LoginForm
 from app import db, bcrypt
-from models import User, Follower
+from models import User, Follower, Tweet
 
 # config
 users_blueprint = Blueprint('users', __name__)
@@ -84,7 +84,10 @@ def all_users():
     users = db.session.query(User).all()
     return render_template('users.html', users=users)
 
-@users_blueprint.route('/profile/')
+@users_blueprint.route('/profile')
 def user_profile():
-    users = db.session.query(User).all()
-    return render_template('users.html', users=users)
+    user = request.args["user"]
+    user_id = list(filter( lambda person: person.name == user,  db.session.query(User).all() ))[0].id
+    users = db.session.query(Follower).filter_by(whom_id=user_id)
+    tweets = db.session.query(Tweet).filter_by(user_id=user_id)    
+    return render_template('profile.html', users=users, tweets=tweets)
