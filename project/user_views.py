@@ -88,6 +88,7 @@ def all_users():
 def user_profile():
     user = request.args["user"]
     user_id = list(filter( lambda person: person.name == user,  db.session.query(User).all() ))[0].id
-    users = db.session.query(Follower).filter_by(whom_id=user_id)
-    tweets = db.session.query(Tweet).filter_by(user_id=user_id)    
-    return render_template('profile.html', users=users, tweets=tweets)
+    followers = db.session.query(Follower).filter_by(whom_id=user_id).all()
+    users = list(filter(lambda person: person.is_following(person.id, user_id), db.session.query(User).all()))
+    tweets = db.session.query(Tweet).filter_by(user_id=user_id).all()
+    return render_template('profile.html', users=users, tweets=tweets, user=user)

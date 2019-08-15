@@ -1,6 +1,9 @@
 {% extends '_base.html' %}
 
 {% block content %}
+
+<h2 >{{ user }}'s Followers</h2>
+
 <div class="row marketing">
     {% for user in users %}
     <div class="media">
@@ -22,6 +25,7 @@
     </div>
     {% endfor %}
 
+<h2 >{{ user }}'s 1Grams</h2>
 
     {% for tweet in all_tweets %}
         <div class="media">
