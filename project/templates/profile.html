@@ -45,6 +45,8 @@
                     <small>{{ tweet.delta_time(tweet.posted) }} <a class="btn btn-default btn-xs" href="{{ url_for('tweets.delete_tweet', tweet_id=tweet.tweet_id )}}">Delete</a></small></h4>
                 {{ tweet.tweet }}
                 {% else %}
+                <h4 class="media-heading">{{ tweet.poster.name }}
+                    <small>{{ tweet.delta_time(tweet.posted) }}</small></h4>
                 {{ tweet.tweet }}
                 {% endif %}
             </div>
